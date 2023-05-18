@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kunzite Iframe Demo</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+    }
+
+    .btn-custom {
+      margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<iframe name="sf" id="sf" src="https://softphone.kunzite.app/" frameborder="0" width="320" height="460" allow="camera *;microphone *"></iframe>
+<button id="click2call" type="button" class="btn btn-primary btn-custom">Click2Call</button>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  window.addEventListener('message', ({ data }) => {
+    console.log('softphone-event', data);
+  });
+
+  document.getElementById("click2call").addEventListener("click", function() {
+    window.frames.sf.postMessage({ type: 'click2call', data: { number: '+34911085460' } }, '*');
+  });
+
+</script>
+</body>
+</html>
