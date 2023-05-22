@@ -33,7 +33,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
   window.addEventListener('message', ({ data }) => {
-    console.log('softphone-event', data);
+    console.log('softphone-event', JSON.stringify(data));
   });
 
   document.getElementById("click2call").addEventListener("click", function() {
