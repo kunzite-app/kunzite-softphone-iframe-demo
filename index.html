@@ -36,7 +36,7 @@
     console.log('softphone-event', JSON.stringify(data));
   });
 
-  document.getElementById("click2call").addEventListener("click", function() {
+  document.getElementById("click2call").addEventListener("click", () => {
     window.frames.sf.postMessage({ type: 'click2call', data: { number: '+34911085460' } }, '*');
   });
 
