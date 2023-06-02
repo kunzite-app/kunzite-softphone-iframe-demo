@@ -32,8 +32,18 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-  window.addEventListener('message', ({ data }) => {
-    console.log('softphone-event', JSON.stringify(data));
+  window.addEventListener('message', ({ data: details }) => {
+    console.log('softphone-event', JSON.stringify(details));
+
+    const { type, data } = details;
+    if (type === 'logged') {
+      const contacts = [
+        { id: 'id1', name: 'John Doe', phones: ['+34666555444'] },
+        { id: 'id2', name: 'Jennifer Doe', phones: ['+34666555444', '+34666777888'] },
+      ];
+
+      window.frames.sf.postMessage({ type: 'contacts', data: { contacts } }, '*');
+    }
   });
 
   document.getElementById("click2call").addEventListener("click", () => {
