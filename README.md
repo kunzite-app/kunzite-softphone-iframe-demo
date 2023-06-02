@@ -132,10 +132,11 @@ window.frames.sf.postMessage({ type: 'click2call', data: { number: '+34911085460
 
 The softphone can handle contacts in two different ways:
 
-By dropping a VCF file anywhere within the softphone. In this case, the file will be handled and saved by the phone in the user's space.
-By invoking contacts and passing the appropriate contacts format payload. This is the current method used by Kunzite to add integration contacts via a socket (currently managed exclusively by Kunzite), either from a parent iframe or from an addon. These contacts are volatile, and the user must ensure that the contacts are initialized at the appropriate time (preferably at the logged event).
-Indexing contacts is a CPU/thread-friendly operation, and indexing only occurs during idle times to prevent freezing the UI.
+1.- By dropping a VCF file anywhere within the softphone. In this case, the file will be handled and saved by the phone in the user's space. 
 
+2.- By invoking contacts and passing the appropriate contacts format payload. This is the current method used by Kunzite to add integration contacts via a socket (currently managed exclusively by Kunzite), either from a parent iframe or from an addon. These contacts are volatile, and the user must ensure that the contacts are initialized at the appropriate time (preferably at the logged event).
+
+Indexing contacts is a CPU/thread-friendly operation, and indexing only occurs during idle times to prevent freezing the UI.
 We support up to 250k contacts (and even more) without interfering with the softphone interoperability. The only drawback is that it may take longer to find a user, depending on the amount of data to be ingested.
 
 ```js
